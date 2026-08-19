@@ -1,11 +1,277 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<section class="hero">
+		<p class="eyebrow">Cybersecurity · Data Analytics · AI Research</p>
+
+		<h1>
+			Building practical security, data and research projects.
+		</h1>
+
+		<p class="intro">
+			I'm Philip Akinnuroju. This website documents my technical work,
+			cybersecurity labs, Python and R projects, data analytics,
+			research, experiments and continuous learning.
+		</p>
+
+		<div class="hero-actions">
+			<a class="primary-button" href="/portfolio">View My Work</a>
+			<a class="secondary-button" href="/about">About Me</a>
+		</div>
+	</section>
+
+	<section class="areas">
+		<h2>Areas of Work</h2>
+
+		<div class="card-grid">
+			<a class="card" href="/labs">
+				<p class="card-label">Security</p>
+				<h3>Cybersecurity Labs</h3>
+				<p>
+					Threat detection, SIEM, network analysis, incident investigation,
+					security engineering and hands-on lab work.
+				</p>
+			</a>
+
+			<a class="card" href="/portfolio">
+				<p class="card-label">Development & Analytics</p>
+				<h3>Python, R & Data</h3>
+				<p>
+					Programming exercises, statistical analysis, automation,
+					data visualisation and analytical projects.
+				</p>
+			</a>
+
+			<a class="card" href="/research">
+				<p class="card-label">Research</p>
+				<h3>AI & Cybersecurity Research</h3>
+				<p>
+					Research notes, literature reviews, explainable AI,
+					graph-based methods and security analytics.
+				</p>
+			</a>
+		</div>
+	</section>
+
+	<section class="featured">
+		<div class="section-heading">
+			<div>
+				<p class="eyebrow">Portfolio</p>
+				<h2>Featured Work</h2>
+			</div>
+
+			<a href="/portfolio">View all projects →</a>
+		</div>
+
+		<div class="project-grid">
+			<article class="project">
+				<p class="project-type">Cybersecurity Lab</p>
+				<h3>Endpoint Threat Detection</h3>
+				<p>
+					Monitoring and investigating endpoint activity using security
+					telemetry and detection tooling.
+				</p>
+				<div class="tags">
+					<span>SIEM</span>
+					<span>Windows</span>
+					<span>Detection</span>
+				</div>
+			</article>
+
+			<article class="project">
+				<p class="project-type">Data Analytics</p>
+				<h3>Security Log Analysis</h3>
+				<p>
+					Using Python to process, investigate and extract useful
+					information from structured security data.
+				</p>
+				<div class="tags">
+					<span>Python</span>
+					<span>Pandas</span>
+					<span>Analytics</span>
+				</div>
+			</article>
+
+			<article class="project">
+				<p class="project-type">Research</p>
+				<h3>AI-Driven Threat Detection</h3>
+				<p>
+					Exploring interpretable and graph-based approaches to
+					cybersecurity threat detection.
+				</p>
+				<div class="tags">
+					<span>AI</span>
+					<span>XAI</span>
+					<span>Cybersecurity</span>
+				</div>
+			</article>
+		</div>
+	</section>
 </Layout>
+
+<style>
+	.hero {
+		max-width: 850px;
+		padding: 5rem 0 6rem;
+	}
+
+	.eyebrow {
+		color: #7dd3fc;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.hero h1 {
+		margin: 1rem 0 1.5rem;
+		font-size: clamp(3rem, 7vw, 5.8rem);
+		line-height: 1.02;
+		letter-spacing: -0.05em;
+	}
+
+	.intro {
+		max-width: 720px;
+		color: #aeb8cc;
+		font-size: 1.2rem;
+	}
+
+	.hero-actions {
+		display: flex;
+		gap: 1rem;
+		margin-top: 2rem;
+		flex-wrap: wrap;
+	}
+
+	.primary-button,
+	.secondary-button {
+		padding: 0.8rem 1.2rem;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: 600;
+	}
+
+	.primary-button {
+		background: #e8edf7;
+		color: #0b1020;
+	}
+
+	.secondary-button {
+		border: 1px solid #35415d;
+		color: #e8edf7;
+	}
+
+	.areas,
+	.featured {
+		padding: 4rem 0;
+		border-top: 1px solid #25304a;
+	}
+
+	h2 {
+		font-size: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	.card-grid,
+	.project-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.25rem;
+	}
+
+	.card,
+	.project {
+		padding: 1.6rem;
+		border: 1px solid #25304a;
+		border-radius: 12px;
+		background: #10172a;
+	}
+
+	.card {
+		text-decoration: none;
+		transition:
+			transform 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.card:hover {
+		transform: translateY(-4px);
+		border-color: #52617f;
+	}
+
+	.card-label,
+	.project-type {
+		margin: 0 0 0.6rem;
+		color: #7dd3fc;
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.card h3,
+	.project h3 {
+		margin: 0 0 0.75rem;
+		font-size: 1.3rem;
+	}
+
+	.card p,
+	.project p {
+		color: #aeb8cc;
+	}
+
+	.card .card-label,
+	.project .project-type {
+		color: #7dd3fc;
+	}
+
+	.section-heading {
+		display: flex;
+		justify-content: space-between;
+		align-items: end;
+		gap: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	.section-heading h2 {
+		margin: 0;
+	}
+
+	.section-heading a {
+		color: #aeb8cc;
+		text-decoration: none;
+	}
+
+	.tags {
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		margin-top: 1.2rem;
+	}
+
+	.tags span {
+		padding: 0.3rem 0.6rem;
+		border: 1px solid #35415d;
+		border-radius: 999px;
+		color: #aeb8cc;
+		font-size: 0.75rem;
+	}
+
+	@media (max-width: 850px) {
+		.card-grid,
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.hero {
+			padding-top: 2rem;
+		}
+
+		.section-heading {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+	}
+</style>

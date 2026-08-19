@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const journals = await getCollection('journals');
+
+const sortedJournals = journals.sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Layout>
+	<section class="journal-hero">
+		<p class="eyebrow">Learning in Public</p>
+
+		<h1>Journals</h1>
+
+		<p class="intro">
+			Notes, reflections and lessons from my ongoing development across
+			programming, cybersecurity, data analytics, artificial intelligence
+			and technical research.
+		</p>
+	</section>
+
+	<section class="journal-section">
+		<div class="section-heading">
+			<div>
+				<p class="eyebrow">Learning Archive</p>
+				<h2>Latest Entries</h2>
+			</div>
+
+			<p>
+				{journals.length} {journals.length === 1 ? 'entry' : 'entries'}
+			</p>
+		</div>
+
+		<div class="journal-grid">
+			{
+				sortedJournals.map((entry) => (
+					<a class="journal-card" href={`/journals/${entry.id}/`}>
+						<p class="category">{entry.data.category}</p>
+
+						<h3>{entry.data.title}</h3>
+
+						<p class="description">
+							{entry.data.description}
+						</p>
+
+						<div class="tags">
+							{entry.data.tags.map((tag) => (
+								<span>{tag}</span>
+							))}
+						</div>
+
+						<p class="read-entry">Read entry →</p>
+					</a>
+				))
+			}
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.journal-hero {
+		max-width: 900px;
+		padding: 4rem 0 5rem;
+	}
+
+	.eyebrow {
+		color: #7dd3fc;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.journal-hero h1 {
+		margin: 1rem 0 1.5rem;
+		font-size: clamp(3rem, 6vw, 5rem);
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.intro {
+		max-width: 760px;
+		color: #aeb8cc;
+		font-size: 1.2rem;
+	}
+
+	.journal-section {
+		padding: 4rem 0;
+		border-top: 1px solid #25304a;
+	}
+
+	.section-heading {
+		display: flex;
+		justify-content: space-between;
+		align-items: end;
+		gap: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	.section-heading h2 {
+		margin: 0.5rem 0 0;
+		font-size: 2rem;
+	}
+
+	.section-heading > p {
+		color: #8894aa;
+	}
+
+	.journal-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.25rem;
+	}
+
+	.journal-card {
+		display: block;
+		padding: 1.75rem;
+		border: 1px solid #25304a;
+		border-radius: 12px;
+		background: #10172a;
+		text-decoration: none;
+		transition:
+			transform 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.journal-card:hover {
+		transform: translateY(-4px);
+		border-color: #52617f;
+	}
+
+	.category {
+		margin: 0;
+		color: #7dd3fc;
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.journal-card h3 {
+		margin: 1rem 0;
+		font-size: 1.4rem;
+	}
+
+	.description {
+		color: #aeb8cc;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1.4rem;
+	}
+
+	.tags span {
+		padding: 0.3rem 0.6rem;
+		border: 1px solid #35415d;
+		border-radius: 999px;
+		color: #aeb8cc;
+		font-size: 0.75rem;
+	}
+
+	.read-entry {
+		margin-top: 1.5rem;
+		font-weight: 600;
+	}
+
+	@media (max-width: 800px) {
+		.journal-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.section-heading {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+	}
+</style>

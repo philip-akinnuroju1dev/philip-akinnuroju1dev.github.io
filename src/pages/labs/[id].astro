@@ -1,0 +1,170 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const labs = await getCollection('labs');
+
+	return labs.map((lab) => ({
+		params: { id: lab.id },
+		props: { lab },
+	}));
+}
+
+const { lab } = Astro.props;
+
+const { Content } = await render(lab);
+---
+
+<Layout>
+	<article class="lab-page">
+
+		<a class="back-link" href="/labs">← Back to Labs</a>
+
+		<header class="lab-header">
+
+			<div class="lab-meta">
+				<span>{lab.data.category}</span>
+				<span>{lab.data.level}</span>
+				<span>{lab.data.status}</span>
+			</div>
+
+			<h1>{lab.data.title}</h1>
+
+			<p class="description">
+				{lab.data.description}
+			</p>
+
+			<div class="tags">
+				{
+					lab.data.tags.map((tag) => (
+						<span>{tag}</span>
+					))
+				}
+			</div>
+
+		</header>
+
+		<div class="lab-content">
+			<Content />
+		</div>
+
+	</article>
+</Layout>
+
+<style>
+
+	.lab-page {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.back-link {
+		display: inline-block;
+		margin-bottom: 3rem;
+		color: #aeb8cc;
+		text-decoration: none;
+	}
+
+	.back-link:hover {
+		color: #ffffff;
+	}
+
+	.lab-header {
+		padding-bottom: 3rem;
+		border-bottom: 1px solid #25304a;
+	}
+
+	.lab-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-bottom: 1.2rem;
+	}
+
+	.lab-meta span {
+		padding: 0.3rem 0.65rem;
+		border: 1px solid #35415d;
+		border-radius: 999px;
+		color: #7dd3fc;
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.lab-header h1 {
+		margin: 0 0 1.5rem;
+		font-size: clamp(2.5rem, 6vw, 4.5rem);
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.description {
+		max-width: 750px;
+		color: #aeb8cc;
+		font-size: 1.15rem;
+		line-height: 1.7;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1.5rem;
+	}
+
+	.tags span {
+		padding: 0.3rem 0.6rem;
+		border: 1px solid #35415d;
+		border-radius: 999px;
+		color: #aeb8cc;
+		font-size: 0.8rem;
+	}
+
+	.lab-content {
+		padding: 3rem 0;
+	}
+
+	.lab-content :global(h1) {
+		display: none;
+	}
+
+	.lab-content :global(h2) {
+		margin-top: 2.5rem;
+		margin-bottom: 1rem;
+		font-size: 1.8rem;
+	}
+
+	.lab-content :global(h3) {
+		margin-top: 2rem;
+		font-size: 1.3rem;
+	}
+
+	.lab-content :global(p),
+	.lab-content :global(li) {
+		color: #b8c2d6;
+		font-size: 1.05rem;
+		line-height: 1.8;
+	}
+
+	.lab-content :global(ul),
+	.lab-content :global(ol) {
+		padding-left: 1.5rem;
+	}
+
+	.lab-content :global(code) {
+		padding: 0.2rem 0.35rem;
+		border-radius: 5px;
+		background: #151e33;
+	}
+
+	.lab-content :global(pre) {
+		overflow-x: auto;
+		padding: 1rem;
+		border: 1px solid #25304a;
+		border-radius: 10px;
+		background: #10172a;
+	}
+
+</style>

@@ -1,0 +1,199 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+
+const sortedProjects = projects.sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Layout>
+	<section class="portfolio-hero">
+		<p class="eyebrow">Portfolio</p>
+
+		<h1>Projects, experiments and technical work.</h1>
+
+		<p class="intro">
+			A collection of my work across cybersecurity, data analytics,
+			programming, artificial intelligence and technical research.
+		</p>
+	</section>
+
+	<section class="projects-section">
+		<div class="section-heading">
+			<div>
+				<p class="eyebrow">Selected Work</p>
+				<h2>Projects</h2>
+			</div>
+
+			<p>{projects.length} project{projects.length === 1 ? '' : 's'}</p>
+		</div>
+
+		<div class="project-grid">
+			{
+				sortedProjects.map((project) => (
+					<a class="project-card" href={`/projects/${project.id}/`}>
+						<div class="project-top">
+							<p class="category">{project.data.category}</p>
+							<span class="status">{project.data.status}</span>
+						</div>
+
+						<h3>{project.data.title}</h3>
+
+						<p class="description">
+							{project.data.description}
+						</p>
+
+						<div class="tags">
+							{project.data.tags.map((tag) => (
+								<span>{tag}</span>
+							))}
+						</div>
+
+						<p class="view-project">View project →</p>
+					</a>
+				))
+			}
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.portfolio-hero {
+		max-width: 900px;
+		padding: 4rem 0 5rem;
+	}
+
+	.eyebrow {
+		color: #7dd3fc;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.portfolio-hero h1 {
+		margin: 1rem 0 1.5rem;
+		font-size: clamp(3rem, 6vw, 5rem);
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.intro {
+		max-width: 750px;
+		color: #aeb8cc;
+		font-size: 1.2rem;
+	}
+
+	.projects-section {
+		padding: 4rem 0;
+		border-top: 1px solid #25304a;
+	}
+
+	.section-heading {
+		display: flex;
+		justify-content: space-between;
+		align-items: end;
+		gap: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	.section-heading h2 {
+		margin: 0.5rem 0 0;
+		font-size: 2rem;
+	}
+
+	.section-heading > p {
+		color: #8894aa;
+	}
+
+	.project-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.25rem;
+	}
+
+	.project-card {
+		display: block;
+		padding: 1.75rem;
+		border: 1px solid #25304a;
+		border-radius: 12px;
+		background: #10172a;
+		text-decoration: none;
+		transition:
+			transform 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.project-card:hover {
+		transform: translateY(-4px);
+		border-color: #52617f;
+	}
+
+	.project-top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.category {
+		margin: 0;
+		color: #7dd3fc;
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.status {
+		padding: 0.25rem 0.55rem;
+		border: 1px solid #35415d;
+		border-radius: 999px;
+		color: #aeb8cc;
+		font-size: 0.75rem;
+	}
+
+	.project-card h3 {
+		margin: 1rem 0;
+		font-size: 1.4rem;
+	}
+
+	.description {
+		color: #aeb8cc;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1.4rem;
+	}
+
+	.tags span {
+		padding: 0.3rem 0.6rem;
+		border: 1px solid #35415d;
+		border-radius: 999px;
+		color: #aeb8cc;
+		font-size: 0.75rem;
+	}
+
+	.view-project {
+		margin: 1.5rem 0 0;
+		color: #e8edf7;
+		font-weight: 600;
+	}
+
+	@media (max-width: 800px) {
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.section-heading {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+	}
+</style>

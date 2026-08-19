@@ -1,0 +1,372 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<section class="cv-hero">
+		<p class="eyebrow">Curriculum Vitae</p>
+
+		<h1>Experience, education and technical expertise.</h1>
+
+		<p class="intro">
+			My background combines IT infrastructure, cybersecurity, data
+			analytics and technical research, supported by hands-on experience
+			across enterprise systems and security technologies.
+		</p>
+
+		<div class="cv-actions">
+			<a class="primary-button" href="#experience">View Experience</a>
+			<a class="secondary-button" href="/contact">Contact Me</a>
+		</div>
+	</section>
+
+	<section class="cv-section" id="experience">
+		<div class="section-title">
+			<p class="eyebrow">Career</p>
+			<h2>Professional Experience</h2>
+		</div>
+
+		<div class="timeline">
+			<article class="timeline-item">
+				<div class="timeline-heading">
+					<div>
+						<h3>IT Support / Infrastructure</h3>
+						<p class="organisation">Professional IT Experience</p>
+					</div>
+				</div>
+
+				<p>
+					Experience supporting users, endpoints, infrastructure and
+					enterprise IT environments, including troubleshooting,
+					administration and technical support.
+				</p>
+
+				<div class="tags">
+					<span>Windows</span>
+					<span>Active Directory</span>
+					<span>Microsoft 365</span>
+					<span>Networking</span>
+					<span>IT Support</span>
+				</div>
+			</article>
+
+			<article class="timeline-item">
+				<div class="timeline-heading">
+					<div>
+						<h3>Cybersecurity</h3>
+						<p class="organisation">Security Operations & Analysis</p>
+					</div>
+				</div>
+
+				<p>
+					Practical experience and continued development across security
+					monitoring, threat detection, endpoint telemetry, network
+					analysis and defensive security.
+				</p>
+
+				<div class="tags">
+					<span>SIEM</span>
+					<span>Threat Detection</span>
+					<span>Incident Response</span>
+					<span>Network Security</span>
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<section class="cv-section">
+		<div class="section-title">
+			<p class="eyebrow">Academic Background</p>
+			<h2>Education</h2>
+		</div>
+
+		<div class="education-grid">
+			<article class="education-card">
+				<p class="degree-type">Master's Degree</p>
+				<h3>MSc Cyber Security</h3>
+				<p>De Montfort University</p>
+				<p class="location">United Kingdom</p>
+			</article>
+
+			<article class="education-card">
+				<p class="degree-type">Master's Degree</p>
+				<h3>MSc International Business with Data Analytics</h3>
+				<p>Ulster University</p>
+				<p class="location">United Kingdom</p>
+			</article>
+
+			<article class="education-card">
+				<p class="degree-type">Bachelor's Degree</p>
+				<h3>B.Tech Industrial Mathematics</h3>
+				<p>Federal University of Technology Akure</p>
+				<p class="location">Nigeria</p>
+			</article>
+		</div>
+	</section>
+
+	<section class="cv-section">
+		<div class="section-title">
+			<p class="eyebrow">Technical Skills</p>
+			<h2>Core Technologies</h2>
+		</div>
+
+		<div class="skills-grid">
+			<div class="skill-group">
+				<h3>Cybersecurity</h3>
+				<div class="tags">
+					<span>SIEM</span>
+					<span>Wazuh</span>
+					<span>Sysmon</span>
+					<span>Wireshark</span>
+					<span>Threat Detection</span>
+					<span>Incident Response</span>
+					<span>Network Security</span>
+				</div>
+			</div>
+
+			<div class="skill-group">
+				<h3>Infrastructure</h3>
+				<div class="tags">
+					<span>Active Directory</span>
+					<span>Group Policy</span>
+					<span>Windows Server</span>
+					<span>Microsoft 365</span>
+					<span>Azure</span>
+					<span>Virtualisation</span>
+					<span>Networking</span>
+				</div>
+			</div>
+
+			<div class="skill-group">
+				<h3>Data & Programming</h3>
+				<div class="tags">
+					<span>Python</span>
+					<span>R</span>
+					<span>SQL</span>
+					<span>Data Analytics</span>
+					<span>Statistics</span>
+					<span>Machine Learning</span>
+				</div>
+			</div>
+
+			<div class="skill-group">
+				<h3>Research</h3>
+				<div class="tags">
+					<span>AI for Cybersecurity</span>
+					<span>Explainable AI</span>
+					<span>Graph Learning</span>
+					<span>Endpoint Telemetry</span>
+					<span>Security Analytics</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="cv-section">
+		<div class="section-title">
+			<p class="eyebrow">Professional Development</p>
+			<h2>Certifications</h2>
+		</div>
+
+		<div class="certifications">
+			<div class="certification">
+				<h3>CompTIA Security+</h3>
+				<p>Cybersecurity fundamentals, threats, architecture and security operations.</p>
+			</div>
+
+			<div class="certification">
+				<h3>CompTIA Network+</h3>
+				<p>Networking concepts, infrastructure, operations and troubleshooting.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="download-section">
+		<div>
+			<p class="eyebrow">Full CV</p>
+			<h2>Download my CV</h2>
+			<p>
+				A downloadable PDF version of my full professional CV will be
+				available here.
+			</p>
+		</div>
+
+		<button class="disabled-button" disabled>
+			PDF Coming Soon
+		</button>
+	</section>
+</Layout>
+
+<style>
+	.cv-hero {
+		max-width: 900px;
+		padding: 4rem 0 5rem;
+	}
+
+	.eyebrow {
+		color: #7dd3fc;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.cv-hero h1 {
+		margin: 1rem 0 1.5rem;
+		font-size: clamp(3rem, 6vw, 5rem);
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.intro {
+		max-width: 760px;
+		color: #aeb8cc;
+		font-size: 1.2rem;
+	}
+
+	.cv-actions {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+		margin-top: 2rem;
+	}
+
+	.primary-button,
+	.secondary-button {
+		padding: 0.8rem 1.2rem;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: 600;
+	}
+
+	.primary-button {
+		background: #e8edf7;
+		color: #0b1020;
+	}
+
+	.secondary-button {
+		border: 1px solid #35415d;
+	}
+
+	.cv-section,
+	.download-section {
+		padding: 4rem 0;
+		border-top: 1px solid #25304a;
+	}
+
+	.section-title {
+		margin-bottom: 2rem;
+	}
+
+	.section-title h2,
+	.download-section h2 {
+		margin: 0.5rem 0 0;
+		font-size: 2rem;
+	}
+
+	.timeline {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.timeline-item,
+	.education-card,
+	.skill-group,
+	.certification {
+		padding: 1.6rem;
+		border: 1px solid #25304a;
+		border-radius: 12px;
+		background: #10172a;
+	}
+
+	.timeline-item h3,
+	.education-card h3,
+	.skill-group h3,
+	.certification h3 {
+		margin-top: 0;
+	}
+
+	.timeline-item > p,
+	.education-card p,
+	.certification p {
+		color: #aeb8cc;
+	}
+
+	.organisation,
+	.degree-type {
+		color: #7dd3fc !important;
+		font-size: 0.85rem;
+		font-weight: 600;
+	}
+
+	.location {
+		font-size: 0.9rem;
+	}
+
+	.education-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+	}
+
+	.skills-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1rem;
+	}
+
+	.tags span {
+		padding: 0.3rem 0.6rem;
+		border: 1px solid #35415d;
+		border-radius: 999px;
+		color: #aeb8cc;
+		font-size: 0.8rem;
+	}
+
+	.certifications {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+
+	.download-section {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.download-section p {
+		color: #aeb8cc;
+	}
+
+	.disabled-button {
+		padding: 0.8rem 1.2rem;
+		border: 1px solid #35415d;
+		border-radius: 8px;
+		background: transparent;
+		color: #8894aa;
+		font-weight: 600;
+		cursor: not-allowed;
+	}
+
+	@media (max-width: 850px) {
+		.education-grid,
+		.skills-grid,
+		.certifications {
+			grid-template-columns: 1fr;
+		}
+
+		.download-section {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+	}
+</style>

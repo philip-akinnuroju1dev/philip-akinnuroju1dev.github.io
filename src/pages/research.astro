@@ -1,0 +1,197 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const research = await getCollection('research');
+
+const sortedResearch = research.sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Layout>
+	<section class="research-hero">
+		<p class="eyebrow">Research</p>
+
+		<h1>Ideas, investigations and research work.</h1>
+
+		<p class="intro">
+			A collection of my research projects, literature reviews,
+			methodology notes, experiments and work across cybersecurity,
+			data science and artificial intelligence.
+		</p>
+	</section>
+
+	<section class="research-section">
+		<div class="section-heading">
+			<div>
+				<p class="eyebrow">Research Archive</p>
+				<h2>Research Work</h2>
+			</div>
+
+			<p>
+				{research.length} item{research.length === 1 ? '' : 's'}
+			</p>
+		</div>
+
+		<div class="research-grid">
+			{
+				sortedResearch.map((item) => (
+					<a class="research-card" href={`/research/${item.id}/`}>
+						<div class="research-top">
+							<p class="type">{item.data.type}</p>
+							<span>{item.data.status}</span>
+						</div>
+
+						<h3>{item.data.title}</h3>
+
+						<p class="description">
+							{item.data.description}
+						</p>
+
+						<div class="tags">
+							{item.data.tags.map((tag) => (
+								<span>{tag}</span>
+							))}
+						</div>
+
+						<p class="view-research">Read research →</p>
+					</a>
+				))
+			}
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.research-hero {
+		max-width: 900px;
+		padding: 4rem 0 5rem;
+	}
+
+	.eyebrow {
+		color: #7dd3fc;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.research-hero h1 {
+		margin: 1rem 0 1.5rem;
+		font-size: clamp(3rem, 6vw, 5rem);
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.intro {
+		max-width: 760px;
+		color: #aeb8cc;
+		font-size: 1.2rem;
+	}
+
+	.research-section {
+		padding: 4rem 0;
+		border-top: 1px solid #25304a;
+	}
+
+	.section-heading {
+		display: flex;
+		justify-content: space-between;
+		align-items: end;
+		gap: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	.section-heading h2 {
+		margin: 0.5rem 0 0;
+		font-size: 2rem;
+	}
+
+	.section-heading > p {
+		color: #8894aa;
+	}
+
+	.research-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.25rem;
+	}
+
+	.research-card {
+		display: block;
+		padding: 1.75rem;
+		border: 1px solid #25304a;
+		border-radius: 12px;
+		background: #10172a;
+		text-decoration: none;
+		transition:
+			transform 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.research-card:hover {
+		transform: translateY(-4px);
+		border-color: #52617f;
+	}
+
+	.research-top {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.type {
+		margin: 0;
+		color: #7dd3fc;
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.research-top span {
+		color: #aeb8cc;
+		font-size: 0.8rem;
+	}
+
+	.research-card h3 {
+		margin: 1rem 0;
+		font-size: 1.4rem;
+	}
+
+	.description {
+		color: #aeb8cc;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1.4rem;
+	}
+
+	.tags span {
+		padding: 0.3rem 0.6rem;
+		border: 1px solid #35415d;
+		border-radius: 999px;
+		color: #aeb8cc;
+		font-size: 0.75rem;
+	}
+
+	.view-research {
+		margin-top: 1.5rem;
+		font-weight: 600;
+	}
+
+	@media (max-width: 800px) {
+		.research-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.section-heading {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+	}
+</style>

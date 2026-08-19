@@ -1,0 +1,195 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const labs = await getCollection('labs');
+
+const sortedLabs = labs.sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Layout>
+	<section class="labs-hero">
+		<p class="eyebrow">Hands-on Practice</p>
+
+		<h1>My Labs</h1>
+
+		<p class="intro">
+			A growing archive of technical exercises, experiments and practical
+			labs across cybersecurity, infrastructure, networking, data and
+			programming.
+		</p>
+	</section>
+
+	<section class="labs-section">
+		<div class="section-heading">
+			<div>
+				<p class="eyebrow">Lab Archive</p>
+				<h2>Technical Labs</h2>
+			</div>
+
+			<p>{labs.length} lab{labs.length === 1 ? '' : 's'}</p>
+		</div>
+
+		<div class="lab-grid">
+			{
+				sortedLabs.map((lab) => (
+					<a class="lab-card" href={`/labs/${lab.id}/`}>
+						<div class="lab-top">
+							<p class="category">{lab.data.category}</p>
+							<span>{lab.data.level}</span>
+						</div>
+
+						<h3>{lab.data.title}</h3>
+
+						<p class="description">
+							{lab.data.description}
+						</p>
+
+						<div class="tags">
+							{lab.data.tags.map((tag) => (
+								<span>{tag}</span>
+							))}
+						</div>
+
+						<p class="view-lab">View lab →</p>
+					</a>
+				))
+			}
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.labs-hero {
+		max-width: 900px;
+		padding: 4rem 0 5rem;
+	}
+
+	.eyebrow {
+		color: #7dd3fc;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.labs-hero h1 {
+		margin: 1rem 0 1.5rem;
+		font-size: clamp(3rem, 6vw, 5rem);
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.intro {
+		max-width: 750px;
+		color: #aeb8cc;
+		font-size: 1.2rem;
+	}
+
+	.labs-section {
+		padding: 4rem 0;
+		border-top: 1px solid #25304a;
+	}
+
+	.section-heading {
+		display: flex;
+		justify-content: space-between;
+		align-items: end;
+		gap: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	.section-heading h2 {
+		margin: 0.5rem 0 0;
+		font-size: 2rem;
+	}
+
+	.section-heading > p {
+		color: #8894aa;
+	}
+
+	.lab-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.25rem;
+	}
+
+	.lab-card {
+		display: block;
+		padding: 1.75rem;
+		border: 1px solid #25304a;
+		border-radius: 12px;
+		background: #10172a;
+		text-decoration: none;
+		transition:
+			transform 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.lab-card:hover {
+		transform: translateY(-4px);
+		border-color: #52617f;
+	}
+
+	.lab-top {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.category {
+		margin: 0;
+		color: #7dd3fc;
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.lab-top span {
+		color: #aeb8cc;
+		font-size: 0.8rem;
+	}
+
+	.lab-card h3 {
+		margin: 1rem 0;
+		font-size: 1.4rem;
+	}
+
+	.description {
+		color: #aeb8cc;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1.4rem;
+	}
+
+	.tags span {
+		padding: 0.3rem 0.6rem;
+		border: 1px solid #35415d;
+		border-radius: 999px;
+		color: #aeb8cc;
+		font-size: 0.75rem;
+	}
+
+	.view-lab {
+		margin-top: 1.5rem;
+		font-weight: 600;
+	}
+
+	@media (max-width: 800px) {
+		.lab-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.section-heading {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+	}
+</style>

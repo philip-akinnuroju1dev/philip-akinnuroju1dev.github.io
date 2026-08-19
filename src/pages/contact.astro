@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<section class="contact-hero">
+		<p class="eyebrow">Contact</p>
+
+		<h1>Let’s connect.</h1>
+
+		<p class="intro">
+			For professional opportunities, research discussions, collaboration
+			or technical networking, you can reach me through the channels below.
+		</p>
+	</section>
+
+	<section class="contact-section">
+		<div class="contact-grid">
+
+			<a class="contact-card" href="mailto:your-email@example.com">
+				<p class="card-label">Email</p>
+				<h2>Email Me</h2>
+				<p>your-email@example.com</p>
+			</a>
+
+			<a
+				class="contact-card"
+				href="https://github.com/philip-akinnuroju1dev"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<p class="card-label">Code & Projects</p>
+				<h2>GitHub</h2>
+				<p>github.com/philip-akinnuroju1dev</p>
+			</a>
+
+			<a
+				class="contact-card"
+				href="#"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<p class="card-label">Professional Network</p>
+				<h2>LinkedIn</h2>
+				<p>Add LinkedIn profile</p>
+			</a>
+
+		</div>
+	</section>
+
+	<section class="contact-note">
+		<p class="eyebrow">Availability</p>
+		<h2>Professional & Research Enquiries</h2>
+
+		<p>
+			I am open to conversations around cybersecurity, IT infrastructure,
+			data analytics, technical research and related professional
+			opportunities.
+		</p>
+	</section>
+</Layout>
+
+<style>
+	.contact-hero {
+		max-width: 850px;
+		padding: 4rem 0 5rem;
+	}
+
+	.eyebrow {
+		color: #7dd3fc;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.contact-hero h1 {
+		margin: 1rem 0 1.5rem;
+		font-size: clamp(3rem, 6vw, 5rem);
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.intro {
+		max-width: 760px;
+		color: #aeb8cc;
+		font-size: 1.2rem;
+	}
+
+	.contact-section,
+	.contact-note {
+		padding: 4rem 0;
+		border-top: 1px solid #25304a;
+	}
+
+	.contact-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.25rem;
+	}
+
+	.contact-card {
+		display: block;
+		padding: 1.75rem;
+		border: 1px solid #25304a;
+		border-radius: 12px;
+		background: #10172a;
+		text-decoration: none;
+		transition:
+			transform 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.contact-card:hover {
+		transform: translateY(-4px);
+		border-color: #52617f;
+	}
+
+	.card-label {
+		margin: 0 0 0.75rem;
+		color: #7dd3fc;
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.contact-card h2 {
+		margin: 0 0 0.75rem;
+	}
+
+	.contact-card p {
+		color: #aeb8cc;
+	}
+
+	.contact-card .card-label {
+		color: #7dd3fc;
+	}
+
+	.contact-note {
+		max-width: 800px;
+	}
+
+	.contact-note h2 {
+		margin: 0.5rem 0 1rem;
+		font-size: 2rem;
+	}
+
+	.contact-note p:last-child {
+		color: #aeb8cc;
+		font-size: 1.05rem;
+	}
+
+	@media (max-width: 850px) {
+		.contact-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

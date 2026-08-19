@@ -1,0 +1,175 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const research = await getCollection('research');
+
+	return research.map((item) => ({
+		params: { id: item.id },
+		props: { item },
+	}));
+}
+
+const { item } = Astro.props;
+
+const { Content } = await render(item);
+---
+
+<Layout>
+	<article class="research-page">
+
+		<a class="back-link" href="/research">← Back to Research</a>
+
+		<header class="research-header">
+
+			<div class="research-meta">
+				<span>{item.data.type}</span>
+				<span>{item.data.status}</span>
+			</div>
+
+			<h1>{item.data.title}</h1>
+
+			<p class="description">
+				{item.data.description}
+			</p>
+
+			<div class="tags">
+				{
+					item.data.tags.map((tag) => (
+						<span>{tag}</span>
+					))
+				}
+			</div>
+
+		</header>
+
+		<div class="research-content">
+			<Content />
+		</div>
+
+	</article>
+</Layout>
+
+<style>
+	.research-page {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.back-link {
+		display: inline-block;
+		margin-bottom: 3rem;
+		color: #aeb8cc;
+		text-decoration: none;
+	}
+
+	.back-link:hover {
+		color: #ffffff;
+	}
+
+	.research-header {
+		padding-bottom: 3rem;
+		border-bottom: 1px solid #25304a;
+	}
+
+	.research-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-bottom: 1.2rem;
+	}
+
+	.research-meta span {
+		padding: 0.3rem 0.65rem;
+		border: 1px solid #35415d;
+		border-radius: 999px;
+		color: #7dd3fc;
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.research-header h1 {
+		margin: 0 0 1.5rem;
+		font-size: clamp(2.5rem, 6vw, 4.5rem);
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.description {
+		max-width: 760px;
+		color: #aeb8cc;
+		font-size: 1.15rem;
+		line-height: 1.7;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1.5rem;
+	}
+
+	.tags span {
+		padding: 0.3rem 0.6rem;
+		border: 1px solid #35415d;
+		border-radius: 999px;
+		color: #aeb8cc;
+		font-size: 0.8rem;
+	}
+
+	.research-content {
+		padding: 3rem 0;
+	}
+
+	.research-content :global(h1) {
+		display: none;
+	}
+
+	.research-content :global(h2) {
+		margin-top: 2.5rem;
+		margin-bottom: 1rem;
+		font-size: 1.8rem;
+	}
+
+	.research-content :global(h3) {
+		margin-top: 2rem;
+		font-size: 1.3rem;
+	}
+
+	.research-content :global(p),
+	.research-content :global(li) {
+		color: #b8c2d6;
+		font-size: 1.05rem;
+		line-height: 1.8;
+	}
+
+	.research-content :global(ul),
+	.research-content :global(ol) {
+		padding-left: 1.5rem;
+	}
+
+	.research-content :global(blockquote) {
+		margin: 2rem 0;
+		padding: 1rem 1.5rem;
+		border-left: 3px solid #7dd3fc;
+		background: #10172a;
+		color: #b8c2d6;
+	}
+
+	.research-content :global(code) {
+		padding: 0.2rem 0.35rem;
+		border-radius: 5px;
+		background: #151e33;
+	}
+
+	.research-content :global(pre) {
+		overflow-x: auto;
+		padding: 1rem;
+		border: 1px solid #25304a;
+		border-radius: 10px;
+		background: #10172a;
+	}
+</style>

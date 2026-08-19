@@ -1,0 +1,310 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<section class="about-hero">
+		<p class="eyebrow">About</p>
+
+		<h1>
+			Mathematics, cybersecurity, data and research.
+		</h1>
+
+		<p class="intro">
+			I am Philip Akinnuroju, a technology professional with an academic
+			background spanning mathematical sciences, cybersecurity and data
+			analytics. My work and interests sit at the intersection of security,
+			data, systems and applied research.
+		</p>
+	</section>
+
+	<section class="about-section">
+		<div class="section-heading">
+			<p class="eyebrow">Background</p>
+			<h2>My Journey</h2>
+		</div>
+
+		<div class="two-column">
+			<div>
+				<p>
+					My academic foundation began in mathematical sciences, where I
+					developed a strong interest in analytical problem solving,
+					modelling and quantitative reasoning.
+				</p>
+
+				<p>
+					I later moved into cybersecurity, building knowledge across areas
+					such as malware analysis, digital forensics, cyber threat
+					intelligence, security engineering and infrastructure.
+				</p>
+			</div>
+
+			<div>
+				<p>
+					My work in data analytics expanded that foundation into practical
+					use of data, statistics, programming and analytical decision making.
+				</p>
+
+				<p>
+					Today, I am developing these areas together through hands-on labs,
+					Python and R projects, security analytics and research into
+					AI-assisted cybersecurity.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div class="section-heading">
+			<p class="eyebrow">Focus</p>
+			<h2>What I Work On</h2>
+		</div>
+
+		<div class="card-grid">
+			<div class="card">
+				<p class="card-label">Cybersecurity</p>
+				<h3>Security Operations & Engineering</h3>
+				<p>
+					Threat detection, SIEM, endpoint telemetry, network analysis,
+					incident investigation, infrastructure security and defensive
+					security labs.
+				</p>
+			</div>
+
+			<div class="card">
+				<p class="card-label">Data</p>
+				<h3>Programming & Analytics</h3>
+				<p>
+					Python, R, data analysis, statistical methods, automation,
+					visualisation and security-focused analytics.
+				</p>
+			</div>
+
+			<div class="card">
+				<p class="card-label">Research</p>
+				<h3>AI for Cybersecurity</h3>
+				<p>
+					Explainable AI, graph-based methods, endpoint telemetry,
+					threat detection and machine learning for security applications.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div class="section-heading">
+			<p class="eyebrow">Education</p>
+			<h2>Academic Background</h2>
+		</div>
+
+		<div class="timeline">
+			<div class="timeline-item">
+				<p class="timeline-type">Master's Degree</p>
+				<h3>MSc Cyber Security</h3>
+				<p>De Montfort University, United Kingdom</p>
+			</div>
+
+			<div class="timeline-item">
+				<p class="timeline-type">Master's Degree</p>
+				<h3>MSc International Business with Data Analytics</h3>
+				<p>Ulster University, United Kingdom</p>
+			</div>
+
+			<div class="timeline-item">
+				<p class="timeline-type">Bachelor's Degree</p>
+				<h3>B.Tech Industrial Mathematics</h3>
+				<p>Federal University of Technology Akure, Nigeria</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="about-section">
+		<div class="section-heading">
+			<p class="eyebrow">Technical Direction</p>
+			<h2>Core Areas</h2>
+		</div>
+
+		<div class="tags">
+			<span>Cybersecurity</span>
+			<span>SIEM</span>
+			<span>Threat Detection</span>
+			<span>Incident Response</span>
+			<span>Endpoint Security</span>
+			<span>Network Security</span>
+			<span>Python</span>
+			<span>R</span>
+			<span>Data Analytics</span>
+			<span>Statistics</span>
+			<span>Machine Learning</span>
+			<span>Explainable AI</span>
+		</div>
+	</section>
+
+	<section class="cta">
+		<div>
+			<p class="eyebrow">Explore</p>
+			<h2>See the work behind the background.</h2>
+		</div>
+
+		<div class="cta-actions">
+			<a class="primary-button" href="/portfolio">View Portfolio</a>
+			<a class="secondary-button" href="/cv">View CV</a>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.about-hero {
+		max-width: 900px;
+		padding: 4rem 0 5rem;
+	}
+
+	.eyebrow {
+		color: #7dd3fc;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.about-hero h1 {
+		margin: 1rem 0 1.5rem;
+		font-size: clamp(3rem, 6vw, 5rem);
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.intro {
+		max-width: 780px;
+		color: #aeb8cc;
+		font-size: 1.2rem;
+	}
+
+	.about-section,
+	.cta {
+		padding: 4rem 0;
+		border-top: 1px solid #25304a;
+	}
+
+	.section-heading {
+		margin-bottom: 2rem;
+	}
+
+	.section-heading h2,
+	.cta h2 {
+		margin: 0.5rem 0 0;
+		font-size: 2rem;
+	}
+
+	.two-column {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 3rem;
+	}
+
+	.two-column p {
+		color: #aeb8cc;
+		font-size: 1.05rem;
+	}
+
+	.card-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.25rem;
+	}
+
+	.card,
+	.timeline-item {
+		padding: 1.6rem;
+		border: 1px solid #25304a;
+		border-radius: 12px;
+		background: #10172a;
+	}
+
+	.card-label,
+	.timeline-type {
+		margin: 0 0 0.6rem;
+		color: #7dd3fc;
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.card h3,
+	.timeline-item h3 {
+		margin: 0 0 0.75rem;
+	}
+
+	.card p,
+	.timeline-item p {
+		color: #aeb8cc;
+	}
+
+	.card .card-label,
+	.timeline-item .timeline-type {
+		color: #7dd3fc;
+	}
+
+	.timeline {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.7rem;
+	}
+
+	.tags span {
+		padding: 0.5rem 0.8rem;
+		border: 1px solid #35415d;
+		border-radius: 999px;
+		color: #aeb8cc;
+		font-size: 0.9rem;
+	}
+
+	.cta {
+		display: flex;
+		align-items: end;
+		justify-content: space-between;
+		gap: 2rem;
+	}
+
+	.cta-actions {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.primary-button,
+	.secondary-button {
+		padding: 0.8rem 1.2rem;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: 600;
+	}
+
+	.primary-button {
+		background: #e8edf7;
+		color: #0b1020;
+	}
+
+	.secondary-button {
+		border: 1px solid #35415d;
+		color: #e8edf7;
+	}
+
+	@media (max-width: 850px) {
+		.two-column,
+		.card-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.cta {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+	}
+</style>

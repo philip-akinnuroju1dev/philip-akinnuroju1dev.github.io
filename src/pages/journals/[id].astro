@@ -1,0 +1,169 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const journals = await getCollection('journals');
+
+	return journals.map((entry) => ({
+		params: { id: entry.id },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+
+const { Content } = await render(entry);
+---
+
+<Layout>
+	<article class="journal-page">
+
+		<a class="back-link" href="/journal">← Back to Journal</a>
+
+		<header class="journal-header">
+
+			<p class="category">{entry.data.category}</p>
+
+			<h1>{entry.data.title}</h1>
+
+			<p class="description">
+				{entry.data.description}
+			</p>
+
+			<p class="date">
+				{entry.data.date.toLocaleDateString('en-GB', {
+					day: 'numeric',
+					month: 'long',
+					year: 'numeric'
+				})}
+			</p>
+
+			<div class="tags">
+				{
+					entry.data.tags.map((tag) => (
+						<span>{tag}</span>
+					))
+				}
+			</div>
+
+		</header>
+
+		<div class="journal-content">
+			<Content />
+		</div>
+
+	</article>
+</Layout>
+
+<style>
+	.journal-page {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.back-link {
+		display: inline-block;
+		margin-bottom: 3rem;
+		color: #aeb8cc;
+		text-decoration: none;
+	}
+
+	.back-link:hover {
+		color: #ffffff;
+	}
+
+	.journal-header {
+		padding-bottom: 3rem;
+		border-bottom: 1px solid #25304a;
+	}
+
+	.category {
+		margin: 0 0 1rem;
+		color: #7dd3fc;
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.journal-header h1 {
+		margin: 0 0 1.5rem;
+		font-size: clamp(2.5rem, 6vw, 4.5rem);
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.description {
+		max-width: 760px;
+		color: #aeb8cc;
+		font-size: 1.15rem;
+		line-height: 1.7;
+	}
+
+	.date {
+		color: #8894aa;
+		font-size: 0.9rem;
+		margin-top: 1.25rem;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1.5rem;
+	}
+
+	.tags span {
+		padding: 0.3rem 0.6rem;
+		border: 1px solid #35415d;
+		border-radius: 999px;
+		color: #aeb8cc;
+		font-size: 0.8rem;
+	}
+
+	.journal-content {
+		padding: 3rem 0;
+	}
+
+	.journal-content :global(h1) {
+		display: none;
+	}
+
+	.journal-content :global(h2) {
+		margin-top: 2.5rem;
+		margin-bottom: 1rem;
+		font-size: 1.8rem;
+	}
+
+	.journal-content :global(h3) {
+		margin-top: 2rem;
+		font-size: 1.3rem;
+	}
+
+	.journal-content :global(p),
+	.journal-content :global(li) {
+		color: #b8c2d6;
+		font-size: 1.05rem;
+		line-height: 1.8;
+	}
+
+	.journal-content :global(ul),
+	.journal-content :global(ol) {
+		padding-left: 1.5rem;
+	}
+
+	.journal-content :global(code) {
+		padding: 0.2rem 0.35rem;
+		border-radius: 5px;
+		background: #151e33;
+	}
+
+	.journal-content :global(pre) {
+		overflow-x: auto;
+		padding: 1rem;
+		border: 1px solid #25304a;
+		border-radius: 10px;
+		background: #10172a;
+	}
+</style>
