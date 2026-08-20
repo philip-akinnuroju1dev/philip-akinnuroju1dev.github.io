@@ -1,6 +1,6 @@
 ---
 title: "Wazuh and Sysmon Endpoint Threat Detection Lab"
-description: "A hands-on security monitoring lab using Wazuh and Sysmon to collect, investigate and analyse Windows endpoint telemetry."
+description: "An in-progress endpoint monitoring and threat-detection project using Wazuh, Sysmon and Windows telemetry, with the environment being rebuilt for evidence-based investigation and documentation."
 category: "Cybersecurity"
 date: 2026-08-19
 featured: true
@@ -10,7 +10,7 @@ tags:
   - SIEM
   - Windows
   - Threat Detection
-status: "Completed"
+status: "In Progress"
 ---
 
 # Wazuh and Sysmon Endpoint Threat Detection Lab
@@ -20,6 +20,12 @@ status: "Completed"
 This project involved building a security monitoring environment using Wazuh and Sysmon to collect and analyse endpoint security telemetry from a Windows system.
 
 The lab provided practical experience with endpoint monitoring, SIEM operations, event analysis and threat detection.
+
+## Current Status
+
+This project is currently being rebuilt as a structured, evidence-based security investigation.
+
+The next phase will include a fresh Wazuh and Sysmon deployment, controlled test activity, alert investigation, event correlation, screenshots, findings and documented lessons learned.
 
 ## Objective
 

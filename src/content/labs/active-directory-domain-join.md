@@ -1,10 +1,10 @@
 ---
 title: "Windows Client Domain Join Lab"
-description: "A hands-on Active Directory exercise involving joining a Windows client to a Windows Server domain and validating domain communication."
+description: "An in-progress Active Directory lab focused on joining a Windows client to a Windows Server domain, validating DNS and domain communication, and documenting the configuration and troubleshooting process."
 category: "Active Directory"
 date: 2026-08-19
 level: "Intermediate"
-status: "Completed"
+status: "In Progress"
 tags:
   - Active Directory
   - Windows Server
@@ -16,6 +16,12 @@ tags:
 ## Overview
 
 This lab focused on connecting a Windows client workstation to an Active Directory domain in a virtual lab environment.
+
+## Current Status
+
+This lab is being rebuilt as a fully documented Active Directory exercise.
+
+The next phase will include domain controller setup, DNS configuration, Windows client domain join, authentication testing, Group Policy validation, screenshots, troubleshooting notes and final findings.
 
 ## Objective
 
